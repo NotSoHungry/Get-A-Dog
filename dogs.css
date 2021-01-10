@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  color: rgb(49, 49, 49);
+}
+
+.main-title {
+  font-family:  'Charm', cursive;
+  text-align: center;
+  font-size: 52px;
+  font-weight: 700;
+}
+
+.dogs-app {
+  /* border: solid 1px black; */
+  background: #fff;
+  display: flex;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 10px;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-menu {
+  width: 100%;
+  /* border: solid 1px black; */
+}
+
+.app-menu form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* FORM STYLE */
+
+.select-css {
+  display: inline-block;
+  height: 50px;
+  width: 40%;
+	font-size: 16px;
+	font-family: sans-serif;
+	font-weight: 700;
+	color: #444;
+	line-height: 1.3;
+	padding: .6em 1.4em .5em .8em;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	border: 1px solid rgb(49, 49, 49);
+	border-radius: .2em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	/* background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'), */
+    /* linear-gradient(to bottom, #41405f 0%,#41405f 100%); */
+  background: #fff;
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+  color: rgb(49, 49, 49);
+  margin-right: 20px;
+}
+.select-css::-ms-expand {
+  display: none;
+}
+.select-css:hover {
+	border-color: #888;
+}
+.select-css:focus {
+	border-color: #aaa;
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #222;
+  outline: none;
+  color: rgb(49, 49, 49);
+}
+.select-css option {
+  font-weight:normal;
+  color: rgb(49, 49, 49);
+}
+
+/* Support for rtl text, explicit support for Arabic and Hebrew */
+*[dir="rtl"] .select-css, :root:lang(ar) .select-css, :root:lang(iw) .select-css {
+	background-position: left .7em top 50%, 0 0;
+	padding: .6em .8em .5em 1.4em;
+}
+
+/* Disabled styles */
+.select-css:disabled, .select-css[aria-disabled=true] {
+	color: graytext;
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+	  linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+}
+.select-css:disabled:hover, .select-css[aria-disabled=true] {
+	border-color: #aaa;
+}
+
+/* Submit button */
+.app-menu button {
+  background: rgb(49, 49, 49);
+  border: 1px solid rgb(49, 49, 49);
+  color:#fff;
+  font-size: 20px;
+  padding: 10px 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.app-menu button:disabled {
+  cursor: not-allowed;
+  background:  rgb(155, 155, 155);
+  border: solid 1px rgb(155, 155, 155);
+  color:  rgb(212, 212, 212);
+}
+
+/* DISPLAY STYLES */
+
+.app-display {
+  /* border: solid 1px black; */
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border: solid 1px rgb(223, 223, 223);
+  min-height: 510px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-display img {
+  width: 70%;
+  max-height: 100%;
+}
+
+.display-title i {
+  font-size: 150px;
+}
+
+.display-text {
+  color: rgb(119, 119, 119);
+  font-family: Arial, Helvetica, sans-serif;
+}
