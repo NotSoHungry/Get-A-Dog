@@ -59,8 +59,12 @@ function getDog() {
     })
 }
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function rerenderDogImage() {
-  const imgTemplate = `<img src="${dogImageURL}" alt="A doggy doing something!">`
+  let imgTemplate = `<img src="${dogImageURL}" alt="A doggy doing something!">`
   APP_DISPLAY.innerHTML = imgTemplate;
 }
 
@@ -68,7 +72,8 @@ function rerenderBreedList() {
   // Select list //
   if (breeds_list.length) {
     breeds_list.forEach(function(breed){
-      let optionTemplate = `<option value="${breed}">${breed}</option>`
+      let optionText = capitalizeFirstLetter(breed);
+      let optionTemplate = `<option value="${breed}">${optionText}</option>`
       SELECT_LIST.innerHTML += optionTemplate;
     })
   }
