@@ -14,11 +14,19 @@ const FORM_BUTTON = document.querySelector('.app-menu button');
 const APP_DISPLAY = document.querySelector('.app-display');
 
 // FUNCTIONS //
+function handleFetchErrors(response) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+
+  return response;
+}
 
 function getBreedList() {
   const promise = fetch(BREEDS_URL);
 
   promise
+    .then(handleFetchErrors)
     .then(function(response) {
       const processingPromise = response.json();
       return processingPromise;
@@ -33,6 +41,7 @@ function getBreedList() {
     .then(function() {
       rerenderBreedList();
     })
+    .catch(rerenderError);
 };
 
 function selectBreed(breed) {
@@ -42,11 +51,17 @@ function selectBreed(breed) {
   }
 }
 
-function getDog() {
+function handleDogRequest() {
+  rerenderSpinner();
+  setTimeout(fetchDogPicture, 1000);
+}
+
+function fetchDogPicture() {
   const DOG_URL = DOG_URL_BASE.replace('selectedBreed', selectedBreed);
   const promise = fetch(DOG_URL);
 
   promise
+    .then(handleFetchErrors)
     .then(function(response) {
       const processingPromise = response.json();
       return processingPromise;
@@ -57,10 +72,24 @@ function getDog() {
     .then(function() {
       rerenderDogImage();
     })
+    .catch(rerenderError);
 }
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function rerenderError() {
+  let errorTemplate = `<i class="display-icon error fas fa-dizzy"></i>
+                      <p class="display-text error">Uups! Something went wrong... Refresh the page and try again!</p>
+
+                        `
+  APP_DISPLAY.innerHTML = errorTemplate;
+}
+
+function rerenderSpinner() {
+  let spinnerTemplate = `<div class="loader">Loading...</div>`
+  APP_DISPLAY.innerHTML = spinnerTemplate;
 }
 
 function rerenderDogImage() {
@@ -99,7 +128,7 @@ function init() {
 
   FORM_BUTTON.addEventListener('click', function(event) {
     if (!FORM_BUTTON.disabled) {
-      getDog();
+      handleDogRequest();
     }
   })
 }
