@@ -81,9 +81,7 @@ function capitalizeFirstLetter(string) {
 
 function rerenderError() {
   let errorTemplate = `<i class="display-icon error fas fa-dizzy"></i>
-                      <p class="display-text error">Uups! Something went wrong... Refresh the page and try again!</p>
-
-                        `
+                      <p class="display-text error">Uups! Something went wrong... Refresh the page and try again!</p>`
   APP_DISPLAY.innerHTML = errorTemplate;
 }
 
