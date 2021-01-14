@@ -1,7 +1,15 @@
-const popmotion = require('popmotion');
+import animate from "./node_modules/popmotion";
+
+function doAnimation() {
+  animate({
+  from: 0,
+  to: 100,
+  onUpdate: latest => console.log(latest)
+  })
+};
 
 const BREEDS_URL   = "https://dog.ceo/api/breeds/list/all";
-const DOG_URL_BASE = "https://dog.ceo/api/breed/selectedBreed/images/random"
+const DOG_URL_BASE = "https://dog.ceo/api/breed/selectedBreed/images/random";
 
 let dogImageURL   = null;
 let selectedBreed = null;
