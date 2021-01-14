@@ -5,7 +5,8 @@
   "main": "dogs.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html",
+    "start": "parcel index.html --out-dir docs",
+    "build": "parcel build src/index.html --out-dir docs --public-url ./",
     "predeploy": "rm -rf dist && parcel build index.html --public-url /Get-A-Dog",
     "deploy": "gh-pages -d dist"
   },

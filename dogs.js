@@ -1,7 +1,4 @@
 let popmotion = require("popmotion");
-let tween = require("popmotion");
-
-console.log(tween);
 
 const BREEDS_URL   = "https://dog.ceo/api/breeds/list/all";
 const DOG_URL_BASE = "https://dog.ceo/api/breed/selectedBreed/images/random";
