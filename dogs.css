@@ -163,6 +163,7 @@ body {
 .display-text {
   color: #14213D;
   font-family: "Roboto", sans-serif;
+  padding: 10px;
 }
 
 .display-text.error {

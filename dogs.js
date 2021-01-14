@@ -1,12 +1,7 @@
-import animate from "./node_modules/popmotion";
+let popmotion = require("popmotion");
+let tween = require("popmotion");
 
-function doAnimation() {
-  animate({
-  from: 0,
-  to: 100,
-  onUpdate: latest => console.log(latest)
-  })
-};
+console.log(tween);
 
 const BREEDS_URL   = "https://dog.ceo/api/breeds/list/all";
 const DOG_URL_BASE = "https://dog.ceo/api/breed/selectedBreed/images/random";
@@ -22,10 +17,12 @@ let fetchSuccess  = true;
 const SELECT_LIST = document.querySelector('.select-css');
 const FORM_BUTTON = document.querySelector('.app-menu button');
 const APP_DISPLAY = document.querySelector('.app-display');
+const DOG_ICON    = document.querySelector(".fas.fa-dog");
 
 // FUNCTIONS //
 function handleFetchErrors(response) {
   if (!response.ok) {
+    console.log(response.statusText);
     throw Error(response.statusText);
   }
 
@@ -51,7 +48,6 @@ function getBreedList() {
     .then(function() {
       rerenderBreedList();
     })
-    .catch(rerenderError);
 };
 
 function selectBreed(breed) {
@@ -126,6 +122,16 @@ function rerenderButton() {
   if (selectedBreed) {FORM_BUTTON.disabled = false;} else {FORM_BUTTON.disabled = true;}
 }
 
+function animateUpDown() {
+  popmotion.animate({
+    to: [0, 15, 0],
+    duration: 700,
+    repeat: 1,
+    repeatType: "mirror",
+    onUpdate: latest => DOG_ICON.style.transform = `rotate(-${latest}deg)`
+  });
+}
+
 function init() {
   rerenderAll();
   getBreedList();
@@ -139,7 +145,14 @@ function init() {
       handleDogRequest();
     }
   })
+
+  setTimeout(() => {
+    animateUpDown();
+  }, 500);
 }
 
 // START APP //
 init();
+
+
+
